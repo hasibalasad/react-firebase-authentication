@@ -1,7 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 function Signup() {
+    const [name, setName] = useState();
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+    const [confirmPassword, setConfirmPassword] = useState();
+    const [error, setError] = useState();
+
+    function handleLogin() {
+        console.log(name)
+        console.log(email)
+        console.log(password)
+        console.log(confirmPassword)
+    }
+
     return (
         <div className=' flex h-screen'>
             <div className='m-auto'>
@@ -11,8 +24,11 @@ function Signup() {
                     <br />
                     <input
                         className=' p-2'
+                        name='name'
                         type='text'
                         placeholder='Enter your name'
+                        value={name}
+                        onChange={e => setName(e.target.value)}
                     />
                 </div>
                 <div className=' p-2'>
@@ -20,8 +36,11 @@ function Signup() {
                     <br />
                     <input
                         className=' p-2'
+                        name='email'
                         type='email'
                         placeholder='Enter your email'
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
                     />
                 </div>
                 <div className=' p-2'>
@@ -29,8 +48,11 @@ function Signup() {
                     <br />
                     <input
                         className=' p-2'
+                        name='password'
                         type='password'
                         placeholder='Enter your password'
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
                     />
                 </div>
                 <div className=' p-2'>
@@ -38,12 +60,17 @@ function Signup() {
                     <br />
                     <input
                         className=' p-2'
+                        name='password'
                         type='password'
                         placeholder='Enter your password again'
+                        value={confirmPassword}
+                        onChange={e => setConfirmPassword(e.target.value)}
                     />
                 </div>
 
-                <button className=' p-2'>Create Account</button>
+                {password !== confirmPassword ? <p className=' text-red-600'> Password did not match</p> : <p></p>}
+
+                <button className=' p-2' onClick={e => handleLogin()}>Create Account</button>
 
                 <div className=' p-2'>
                     <p>
